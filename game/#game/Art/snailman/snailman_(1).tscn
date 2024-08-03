@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://tbn0qo8ft758"]
+[gd_scene load_steps=2 format=3 uid="uid://tbn0qo8ft758"]
 
 [ext_resource type="PackedScene" uid="uid://dwc0j2e7s4inu" path="res://#game/Art/snailman/Snailman (1).glb" id="1_m6vh1"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_awnr2"]
-size = Vector3(2.5, 2, 3)
 
 [node name="Snailman (1)" instance=ExtResource("1_m6vh1")]
 
@@ -238,14 +235,3 @@ transform = Transform3D(-0.0455548, -0.119688, 0.0024254, -0.0889969, 0.0321238,
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "ArmatureAction"
-
-[node name="RigidBody3D" type="RigidBody3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00725269, 1.21658, 2.99929)
-collision_layer = 3
-collision_mask = 3
-max_contacts_reported = 10
-contact_monitor = true
-
-[node name="wd" type="CollisionShape3D" parent="RigidBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284831, -0.0396352, -2.60058)
-shape = SubResource("BoxShape3D_awnr2")

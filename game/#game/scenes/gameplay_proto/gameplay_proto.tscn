@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://1r13fao81pgg"]
+[gd_scene load_steps=12 format=3 uid="uid://1r13fao81pgg"]
 
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scene_manager.gd" id="1_2csxf"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/ambient_manager.gd" id="2_62dam"]
@@ -7,11 +7,14 @@
 [ext_resource type="Terrain3DAssets" uid="uid://bnq6fnvu6uovo" path="res://#game/Art/Terrains/gameplay_proto/terrain_meshes_textures_lists.tres" id="4_iy8fh"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/lightning_manager.gd" id="6_evdyr"]
 [ext_resource type="PackedScene" uid="uid://tbn0qo8ft758" path="res://#game/Art/snailman/snailman_(1).tscn" id="6_yec2b"]
-[ext_resource type="Script" path="res://#game/Art/snailman/goal.gd" id="7_kcfgd"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="7_xrpol"]
+[ext_resource type="Script" path="res://#game/scenes/gameplay_proto/goal.gd" id="9_lwuvd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lo3ft"]
 size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wk1vk"]
+size = Vector3(3, 3, 3)
 
 [node name="SceneManager" type="Node3D"]
 script = ExtResource("1_2csxf")
@@ -41,8 +44,19 @@ script = ExtResource("6_evdyr")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scenary/Lightining"]
 transform = Transform3D(1, 0, 0, 0, 0.879399, 0.476085, 0, -0.476085, 0.879399, 0, 1.35057, 2.26571)
 
-[node name="Snailman (1)" parent="." instance=ExtResource("6_yec2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2398)
-script = ExtResource("7_kcfgd")
-
 [node name="Character" parent="." instance=ExtResource("7_xrpol")]
+
+[node name="Goal" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.3914)
+
+[node name="Snailman (1)" parent="Goal" instance=ExtResource("6_yec2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383451, -0.114888, 0)
+
+[node name="Area3D" type="Area3D" parent="Goal"]
+script = ExtResource("9_lwuvd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_wk1vk")
+
+[connection signal="body_entered" from="Goal/Area3D" to="Goal/Area3D" method="_on_body_entered"]
