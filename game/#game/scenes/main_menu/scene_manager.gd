@@ -1,6 +1,7 @@
 class_name MainMenuSceneManager extends Node2D
 
 const gameplay_proto_scene_path = "res://#game/scenes/gameplay_proto/gameplay_proto.tscn"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -11,4 +12,3 @@ func _process(delta):
 
 func start_button_pressed():
 	get_tree().change_scene_to_file(gameplay_proto_scene_path)
-	pass
