@@ -10,3 +10,8 @@ static func rangef(start: float, end: float, step: float):
 		res.push_back(i)
 		i += step
 	return res
+
+static func class_implements(obj : Object, interfaces : Array[Object]):
+	for interface in interfaces:
+		for method in interface.get_script_method_list():
+			return method in obj.get_script().get_script_method_list()
