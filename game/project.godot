@@ -14,3 +14,7 @@ config/name="Game Jam Destruction"
 run/main_scene="res://#game/scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://#game/icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
