@@ -1,4 +1,4 @@
-extends Node2D
+class_name MainMenuSceneManager extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,5 +11,5 @@ func _process(delta):
 	pass
 
 func start_button_pressed():
-	print('aa')
+	#get_tree().change_scene_to_packed(gampeplay_proto_scene)
 	pass
