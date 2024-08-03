@@ -11,9 +11,12 @@ func _ready():
 func _process(delta):
 	var child: RigidBody3D
 	child = find_child("RigidBody3D")
+	
 	if (child):
 		var children = child.get_colliding_bodies()
 		for objectCollision in children:
-			if objectCollision.name == 'Player':
+			if objectCollision.name == "Character":
+				print("hmm")
+				Utils.get_scene_manager(self).player_reached_goal()
 				
 	pass

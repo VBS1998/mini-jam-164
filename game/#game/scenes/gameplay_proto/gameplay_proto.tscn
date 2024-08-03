@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://1r13fao81pgg"]
+[gd_scene load_steps=10 format=3 uid="uid://1r13fao81pgg"]
 
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scene_manager.gd" id="1_2csxf"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/ambient_manager.gd" id="2_62dam"]
@@ -6,9 +6,20 @@
 [ext_resource type="Terrain3DMaterial" uid="uid://cfto7uloxydc1" path="res://#game/Art/Terrains/gameplay_proto/default_terrain_3d_material.tres" id="3_ufofr"]
 [ext_resource type="Terrain3DAssets" uid="uid://bnq6fnvu6uovo" path="res://#game/Art/Terrains/gameplay_proto/terrain_meshes_textures_lists.tres" id="4_iy8fh"]
 [ext_resource type="PackedScene" uid="uid://tbn0qo8ft758" path="res://#game/Art/snailman/snailman_(1).tscn" id="6_yec2b"]
+[ext_resource type="Script" path="res://#game/Art/snailman/goal.gd" id="7_kcfgd"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="7_xrpol"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lo3ft"]
+size = Vector3(100, 1, 100)
 
 [node name="SceneManager" type="Node3D"]
 script = ExtResource("1_2csxf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_lo3ft")
 
 [node name="AmbientManager" type="Node3D" parent="."]
 script = ExtResource("2_62dam")
@@ -27,8 +38,8 @@ assets = ExtResource("4_iy8fh")
 
 [node name="Lightining" type="Node3D" parent="Scenary"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.868502, 0.495686, 0, -0.495686, 0.868502, 0, 2.69414, 5.44125)
-
 [node name="Snailman (1)" parent="." instance=ExtResource("6_yec2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2398)
+script = ExtResource("7_kcfgd")
+
+[node name="Character" parent="." instance=ExtResource("7_xrpol")]
