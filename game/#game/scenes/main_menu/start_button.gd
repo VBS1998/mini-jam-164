@@ -1,4 +1,4 @@
-extends Button
+class_name StartButton extends Button
 
 func _ready():
 	pressed.connect(self._button_pressed)
