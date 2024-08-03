@@ -20,10 +20,6 @@ func _ready():
 func _process(delta):
 	ambient_manager.set_light_intensity(1 - time_spent/TIME_MAX)
 
-func _input(event):
-	if event.is_pressed():
-		time_over()
-
 func player_reached_goal():
 	print("GANHOO")
 	get_tree().change_scene_to_file(main_menu_scene_path)	
