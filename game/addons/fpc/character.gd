@@ -4,7 +4,7 @@
 # Quality Godot First Person Controller v2
 
 
-extends CharacterBody3D
+class_name CharacterFpc extends CharacterBody3D
 
 # TODO: Add descriptions for each value
 
