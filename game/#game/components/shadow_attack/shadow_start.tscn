@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bli8pbq1ipb03"]
+
+[ext_resource type="Script" path="res://#game/components/shadow_attack/shadow_start.gd" id="1_16j0n"]
+[ext_resource type="PackedScene" uid="uid://tbn0qo8ft758" path="res://#game/Art/snailman/snailman.tscn" id="1_afw0e"]
+[ext_resource type="PackedScene" uid="uid://bn2pts4jb08q7" path="res://#game/components/shadow_attack/character_body_3d.tscn" id="2_igi46"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vyuoq"]
+size = Vector3(2.5, 3, 2)
+
+[node name="ShadowStart" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1_16j0n")
+
+[node name="Snailman" parent="." instance=ExtResource("1_afw0e")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_vyuoq")
+
+[node name="ShadowAttack" parent="." instance=ExtResource("2_igi46")]

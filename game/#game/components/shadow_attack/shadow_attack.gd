@@ -24,9 +24,6 @@ func _physics_process(delta):
 			new_pos.y =  global_position.y
 			global_position = new_pos
 
-func kill():
-	queue_free()
-
 var player_implements : Array[Object] = [IKillable]
 func _on_area_3d_body_entered(body):
 	if Utils.class_implements(body, player_implements):
