@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6npjvs45s7wn"
+path="res://.godot/imported/Enclosed Forest _ Eerie Fauna, Creepy Noises, Nighttime Ambience _ 3 Hours (mp3cut.net).mp3-c3bd5b9cb0dc13f2b3b6df287d801c11.mp3str"
+
+[deps]
+
+source_file="res://#game/Art/Music/Enclosed Forest _ Eerie Fauna, Creepy Noises, Nighttime Ambience _ 3 Hours (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Enclosed Forest _ Eerie Fauna, Creepy Noises, Nighttime Ambience _ 3 Hours (mp3cut.net).mp3-c3bd5b9cb0dc13f2b3b6df287d801c11.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
