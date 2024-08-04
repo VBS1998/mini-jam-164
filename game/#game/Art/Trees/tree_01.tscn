@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cbxke30ly0677"]
+
+[node name="tree01"]
+
+[node name="Bottom_T" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 39.1839, 0, 0)
