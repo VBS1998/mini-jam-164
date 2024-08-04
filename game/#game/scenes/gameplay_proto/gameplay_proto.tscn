@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://1r13fao81pgg"]
+[gd_scene load_steps=21 format=3 uid="uid://1r13fao81pgg"]
 
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/scene_manager.gd" id="1_2csxf"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/ambient_manager.gd" id="2_62dam"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/goal.gd" id="9_lwuvd"]
 [ext_resource type="Texture2D" uid="uid://cxkfec4bcbjrt" path="res://#game/Art/Materials/panorama_image (3).png" id="10_i7y74"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/world_env_manager.gd" id="10_xigyv"]
+[ext_resource type="Script" path="res://#game/scenes/gameplay_proto/AudioManager.gd" id="12_fio3l"]
+[ext_resource type="AudioStream" uid="uid://6npjvs45s7wn" path="res://#game/Art/Music/Enclosed Forest _ Eerie Fauna, Creepy Noises, Nighttime Ambience _ 3 Hours (mp3cut.net).mp3" id="12_r477p"]
+[ext_resource type="AudioStream" uid="uid://cw5v4f13cnjcq" path="res://#game/Art/Music/Fundo Tema de Terror (slow+echo).mp3" id="14_nos2t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lo3ft"]
 size = Vector3(100, 1, 100)
@@ -83,5 +86,16 @@ shape = SubResource("BoxShape3D_wk1vk")
 environment = SubResource("Environment_5rghn")
 camera_attributes = SubResource("CameraAttributesPractical_viqbj")
 script = ExtResource("10_xigyv")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("12_fio3l")
+
+[node name="AudioStreamPlayerForestSound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("12_r477p")
+autoplay = true
+
+[node name="AudioStreamPlayerCreepySound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("14_nos2t")
+autoplay = true
 
 [connection signal="body_entered" from="Goal/Area3D" to="Goal/Area3D" method="_on_body_entered"]
