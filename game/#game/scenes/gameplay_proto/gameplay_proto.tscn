@@ -47,11 +47,12 @@ script = ExtResource("1_2csxf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_lo3ft")
 
-[node name="AmbientManager" type="Node3D" parent="." node_paths=PackedStringArray("lightning_manager", "world_env_manager", "moon_manager")]
+[node name="AmbientManager" type="Node3D" parent="." node_paths=PackedStringArray("lightning_manager", "world_env_manager", "moon_manager", "audio_manager")]
 script = ExtResource("2_62dam")
 lightning_manager = NodePath("../Scenary/Lightining")
 world_env_manager = NodePath("../WorldEnvManager")
 moon_manager = NodePath("../Scenary/Objects/MoonController")
+audio_manager = NodePath("../AudioManager")
 
 [node name="Scenary" type="Node3D" parent="."]
 
@@ -76,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 0.879399, 0.476085, 0, -0.476085, 0.879399, 
 [node name="Goal" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.3914)
 
-[node name="Snailman (1)" parent="Goal" instance=ExtResource("6_yec2b")]
+[node name="Snailman" parent="Goal" instance=ExtResource("6_yec2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383451, -0.114888, 0)
 
 [node name="Area3D" type="Area3D" parent="Goal"]
@@ -96,7 +97,6 @@ script = ExtResource("12_fio3l")
 
 [node name="AudioStreamPlayerForestSound" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("12_r477p")
-volume_db = -80.0
 autoplay = true
 
 [node name="AudioStreamPlayerCreepySound" type="AudioStreamPlayer" parent="AudioManager"]
