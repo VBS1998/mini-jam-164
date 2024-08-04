@@ -9,6 +9,7 @@ const SPEED = 2
 func _process(delta):
 	if player != null:
 		nav_agent.target_position = player.position
+		look_at(player.position)
 	
 
 func _physics_process(delta):

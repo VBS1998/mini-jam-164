@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn2pts4jb08q7"]
+
+[ext_resource type="Script" path="res://#game/components/shadow_attack/shadow_attack.gd" id="1_sxdyg"]
+[ext_resource type="Script" path="res://addons/TrailRenderer/Runtime/GD/trail_renderer.gd" id="2_fd48g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3h05g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdboq"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("nav_region", "nav_agent", "player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.248, 0, -3.961)
+script = ExtResource("1_sxdyg")
+nav_region = NodePath("")
+nav_agent = NodePath("")
+player = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_3h05g")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_height_offset = 1.0
+path_max_distance = 30.01
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(-8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0, 0.2, 0, 0.0841489, 0)
+script = ExtResource("2_fd48g")
+lifetime = 600.0
+alignment = 2
+material = SubResource("StandardMaterial3D_hdboq")
