@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dwc0j2e7s4inu" path="res://#game/Art/snailman/Snailman.glb" id="1_m6vh1"]
 
 [node name="Snailman" instance=ExtResource("1_m6vh1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Armature" parent="." index="0"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -213,25 +214,25 @@ bones/139/position = Vector3(3.68057, 1.01573, 0.116083)
 bones/140/position = Vector3(-5.34901, 13.2304, 15.5434)
 
 [node name="SnailmanEyeR_Low" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.119395, 0.0132634, 0.0444482, 0.0430057, 0.0776356, 0.0923528, -0.0173753, 0.101016, -0.0768245, -1.5171, -3.96865, -8.47923)
+transform = Transform3D(-0.119396, 0.0132635, 0.044448, 0.0430056, 0.0776355, 0.0923528, -0.0173753, 0.101016, -0.0768243, -1.51711, -3.96863, -8.47923)
 
 [node name="SnailmanEyeR_UltraLow" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.119395, 0.0132634, 0.0444482, 0.0430057, 0.0776356, 0.0923528, -0.0173753, 0.101016, -0.0768245, -1.5171, -3.96865, -8.47923)
+transform = Transform3D(-0.119396, 0.0132635, 0.044448, 0.0430056, 0.0776355, 0.0923528, -0.0173753, 0.101016, -0.0768243, -1.51711, -3.96863, -8.47923)
 
 [node name="SnailmanEyeL_Low" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.119824, -0.0232796, -0.0388201, -0.0450995, 0.0707313, 0.0967928, 0.00384624, 0.104225, -0.0743676, 3.78824, -3.03553, -8.99451)
+transform = Transform3D(-0.119824, -0.0232795, -0.0388204, -0.0450996, 0.0707312, 0.0967927, 0.00384606, 0.104225, -0.0743674, 3.78823, -3.0355, -8.9945)
 
 [node name="SnailmanEyeL_UltraLow" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.119824, -0.0232796, -0.0388201, -0.0450995, 0.0707313, 0.0967928, 0.00384624, 0.104225, -0.0743676, 3.78824, -3.03553, -8.99451)
+transform = Transform3D(-0.119824, -0.0232795, -0.0388204, -0.0450996, 0.0707312, 0.0967927, 0.00384606, 0.104225, -0.0743674, 3.78823, -3.0355, -8.9945)
 
 [node name="SnailmanShell_Low" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.0456381, -0.119655, 0.00250615, -0.0890382, 0.0321533, -0.0862828, 0.0799733, -0.032485, -0.0946327, -0.0952063, 4.52357, -0.12347)
+transform = Transform3D(-0.045638, -0.119655, 0.00250618, -0.0890382, 0.0321532, -0.0862828, 0.0799733, -0.032485, -0.0946327, -0.0952061, 4.52358, -0.123469)
 
 [node name="SnailmanShell_Low" parent="Armature/Skeleton3D/SnailmanShell_Low" index="0"]
 transform = Transform3D(1, 0, -1.49012e-08, 1.49012e-08, 1, 3.72529e-09, 4.47035e-08, -7.45058e-09, 1, 0, 0, 0)
 
 [node name="SnailmanShell_UltraLow" parent="Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.0456381, -0.119655, 0.00250615, -0.0890382, 0.0321533, -0.0862828, 0.0799733, -0.032485, -0.0946327, -0.0952063, 4.52357, -0.12347)
+transform = Transform3D(-0.045638, -0.119655, 0.00250618, -0.0890382, 0.0321532, -0.0862828, 0.0799733, -0.032485, -0.0946327, -0.0952061, 4.52358, -0.123469)
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "teste"
