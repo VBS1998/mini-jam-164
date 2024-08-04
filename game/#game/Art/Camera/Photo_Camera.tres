@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dmx0svodw0yqh"]
+
+[ext_resource type="Texture2D" uid="uid://bgtrt5a5haccv" path="res://#game/Art/Camera/Flashlight_Poquet-e0b50e290928cc44f7d70e3a205d9505_Photo_Camera.png" id="1_57i40"]
+
+[resource]
+resource_name = "Photo_Camera"
+albedo_color = Color(1, 1, 1, 1)
+albedo_texture = ExtResource("1_57i40")
+metallic = 0.4
