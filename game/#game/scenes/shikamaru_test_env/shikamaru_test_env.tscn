@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://b4q7p1yp76ylj"]
+
+[ext_resource type="Terrain3DStorage" uid="uid://d18lmi18gxkuu" path="res://#game/scenes/shikamaru_test_env/new_terrain_3d_storage.res" id="1_yta6t"]
+[ext_resource type="PackedScene" uid="uid://c501ahusa6fxu" path="res://#game/components/player/player.tscn" id="2_35ykn"]
+[ext_resource type="Script" path="res://#game/components/shadow_attack/shadow_attack.gd" id="3_pr4gd"]
+
+[sub_resource type="Gradient" id="Gradient_lq1j0"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v4srl"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mhr2f"]
+seamless = true
+color_ramp = SubResource("Gradient_lq1j0")
+noise = SubResource("FastNoiseLite_v4srl")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_mbu8w"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"macro_variation1": Color(1, 1, 1, 1),
+"macro_variation2": Color(1, 1, 1, 1),
+"noise1_angle": 0.0,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise3_scale": 0.225,
+"noise_texture": SubResource("NoiseTexture2D_mhr2f"),
+"vertex_normals_distance": 128.0
+}
+show_checkered = true
+show_navigation = true
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqk8l"]
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ylixa"]
+height_offset = 0.5
+density = 10.0
+material_override = SubResource("StandardMaterial3D_mqk8l")
+generated_type = 1
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_slijt"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_ylixa")])
+resource_local_to_scene = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_vaqfl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ha3ag"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3h05g"]
+
+[node name="ShikamaruTestEnv" type="Node3D"]
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+storage = ExtResource("1_yta6t")
+material = SubResource("Terrain3DMaterial_mbu8w")
+assets = SubResource("Terrain3DAssets_slijt")
+
+[node name="Character" parent="." instance=ExtResource("2_35ykn")]
+transform = Transform3D(0.168816, 0, -0.985648, 0, 1, 0, 0.985648, 0, 0.168816, -14.992, 0, -5.23662)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.463574, 0.886058, 0, -0.886058, 0.463574, 0, 0, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.59328, 0, -7.61756)
+navigation_mesh = SubResource("NavigationMesh_vaqfl")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("nav_region", "nav_agent", "player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24788, 0.5, -3.96117)
+script = ExtResource("3_pr4gd")
+nav_region = NodePath("../NavigationRegion3D")
+nav_agent = NodePath("MeshInstance3D/NavigationAgent3D")
+player = NodePath("../Character")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("BoxMesh_ha3ag")
+skeleton = NodePath("../..")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_3h05g")
