@@ -1,4 +1,4 @@
-class_name CameraManager extends Node3D
+class_name TekpixManager extends Node3D
 
 var flash_node : Node3D
 # Called when the node enters the scene tree for the first time.
@@ -8,7 +8,3 @@ func _ready():
 func activate():
 	flash_node.flash()
 
-func _input(event):
-	if event.is_pressed():
-		activate()
-	

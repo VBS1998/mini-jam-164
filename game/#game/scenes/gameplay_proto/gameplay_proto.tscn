@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://db7yghaf3isve" path="res://#game/components/moon/moon.tscn" id="3_wpgei"]
 [ext_resource type="Terrain3DAssets" uid="uid://bnq6fnvu6uovo" path="res://#game/Art/Terrains/gameplay_proto/terrain_meshes_textures_lists.tres" id="4_iy8fh"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/lightning_manager.gd" id="6_evdyr"]
-[ext_resource type="PackedScene" uid="uid://tbn0qo8ft758" path="res://#game/Art/snailman/snailman_(1).tscn" id="6_yec2b"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="7_xrpol"]
+[ext_resource type="PackedScene" uid="uid://tbn0qo8ft758" path="res://#game/Art/snailman/snailman.tscn" id="6_yec2b"]
+[ext_resource type="PackedScene" uid="uid://c501ahusa6fxu" path="res://#game/components/player/player.tscn" id="8_41xwi"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/goal.gd" id="9_lwuvd"]
 [ext_resource type="Texture2D" uid="uid://cxkfec4bcbjrt" path="res://#game/Art/Materials/panorama_image (3).png" id="10_i7y74"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/world_env_manager.gd" id="10_xigyv"]
@@ -71,7 +71,7 @@ script = ExtResource("6_evdyr")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scenary/Lightining"]
 transform = Transform3D(1, 0, 0, 0, 0.879399, 0.476085, 0, -0.476085, 0.879399, 0, 1.35057, 2.26571)
 
-[node name="Character" parent="." instance=ExtResource("7_xrpol")]
+[node name="Character" parent="." instance=ExtResource("8_41xwi")]
 
 [node name="Goal" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.3914)
@@ -96,10 +96,12 @@ script = ExtResource("12_fio3l")
 
 [node name="AudioStreamPlayerForestSound" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("12_r477p")
+volume_db = -80.0
 autoplay = true
 
 [node name="AudioStreamPlayerCreepySound" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("14_nos2t")
+volume_db = -80.0
 autoplay = true
 
 [connection signal="body_entered" from="Goal/Area3D" to="Goal/Area3D" method="_on_body_entered"]

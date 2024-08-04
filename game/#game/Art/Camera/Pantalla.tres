@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://230tifwapq6j"]
-
-[ext_resource type="Texture2D" uid="uid://35hrx2ayoij" path="res://#game/Art/Camera/Pantalla.png" id="1_n4mrw"]
-
-[resource]
-resource_name = "Pantalla"
-albedo_texture = ExtResource("1_n4mrw")
-metallic = 0.4
-emission = Color(0.0339627, 1, 0, 1)

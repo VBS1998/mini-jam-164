@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgtrt5a5haccv"
-path.s3tc="res://.godot/imported/Flashlight_Poquet-e0b50e290928cc44f7d70e3a205d9505_Photo_Camera.png-7fcf1d78119cc3af1e3480ad904beed1.s3tc.ctex"
+uid="uid://dtmglb1ggr15l"
+path.s3tc="res://.godot/imported/Snailman_Low_initialShadingGroup_MetallicSmoothness.png-26e5112c6b4b6c49b04a3e5b98bd920a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://#game/Art/Camera/Flashlight_Poquet-e0b50e290928cc44f7d70e3a205d9505_Photo_Camera.png"
-dest_files=["res://.godot/imported/Flashlight_Poquet-e0b50e290928cc44f7d70e3a205d9505_Photo_Camera.png-7fcf1d78119cc3af1e3480ad904beed1.s3tc.ctex"]
+source_file="res://#game/Art/snailman/Textures/Snailman_Low_initialShadingGroup_MetallicSmoothness.png"
+dest_files=["res://.godot/imported/Snailman_Low_initialShadingGroup_MetallicSmoothness.png-26e5112c6b4b6c49b04a3e5b98bd920a.s3tc.ctex"]
 
 [params]
 

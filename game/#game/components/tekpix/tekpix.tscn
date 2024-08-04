@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw1tpjtgkvfso"]
+
+[ext_resource type="Script" path="res://#game/components/tekpix/scripts/tekpix_manager.gd" id="1_d70tp"]
+[ext_resource type="PackedScene" uid="uid://devw06n8dxn0i" path="res://#game/Art/Tekpix/Flashlight_Poquet.fbx" id="2_ibljd"]
+[ext_resource type="Script" path="res://#game/components/tekpix/scripts/flash.gd" id="3_vp58m"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wa010"]
+height = 15.0
+radius = 11.0
+
+[node name="TekpixManager" type="Node3D"]
+script = ExtResource("1_d70tp")
+
+[node name="Tekpix" parent="." instance=ExtResource("2_ibljd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0139127, 0, 0.00266263)
+
+[node name="Flash" type="Node3D" parent="."]
+script = ExtResource("3_vp58m")
+
+[node name="Area3D" type="Area3D" parent="Flash"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flash/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 7.5)
+shape = SubResource("CylinderShape3D_wa010")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Flash"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.0116577, -0.00518799, 0.00952148)
+light_energy = 0.0
+spot_range = 15.0
