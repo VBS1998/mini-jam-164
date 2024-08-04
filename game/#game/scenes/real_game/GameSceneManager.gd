@@ -1,6 +1,7 @@
 extends Node3D
 
-const main_menu_scene_path = "res://#game/scenes/main_menu/main_menu.tscn"
+const win_scene_path = "res://#game/scenes/win_screen/win_screen.tscn"
+const lose_scene_path = "res://#game/scenes/lose_screen/lose_screen.tscn"
 
 @export var TIME_MAX = 120.0
 const UPDATE_SPEED = 0.1
@@ -30,11 +31,11 @@ func _input(event):
 
 func lose():
 	print("LOST")
-	get_tree().change_scene_to_file(main_menu_scene_path)
+	get_tree().change_scene_to_file(lose_scene_path)
 	
 func win():
 	print("GANHO")
-	get_tree().change_scene_to_file(main_menu_scene_path)
+	get_tree().change_scene_to_file(win_scene_path)
 
 func start_timer(time_sec:float, update_speed:float):
 	for i in Utils.rangef(0, time_sec, update_speed):

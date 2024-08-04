@@ -73,7 +73,7 @@ fog_density = 0.0003
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_viqbj"]
 resource_local_to_scene = true
 
-[node name="SceneManager" type="Node3D"]
+[node name="SceneManager2" type="Node3D"]
 script = ExtResource("1_2csxf")
 TIME_MAX = 120.0
 

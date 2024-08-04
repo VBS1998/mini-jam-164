@@ -4,7 +4,7 @@ const gameplay_proto_scene_path = "res://#game/scenes/real_game/Game.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
