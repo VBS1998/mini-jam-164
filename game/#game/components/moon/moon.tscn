@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://db7yghaf3isve"]
+
+[ext_resource type="Script" path="res://#game/components/moon/scripts/moon_controller.gd" id="1_fa340"]
+[ext_resource type="Texture2D" uid="uid://duhuv51s7rf8p" path="res://#game/Art/Materials/Sky/moon-png-44668.png" id="2_8sici"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t32te"]
+transparency = 1
+albedo_texture = ExtResource("2_8sici")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ndpyj"]
+material = SubResource("StandardMaterial3D_t32te")
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_divut"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("2_8sici")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t7bgi"]
+material = SubResource("StandardMaterial3D_divut")
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dh1xr"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2d8le"]
+material = SubResource("StandardMaterial3D_dh1xr")
+orientation = 2
+
+[node name="MoonController" type="Node3D"]
+script = ExtResource("1_fa340")
+
+[node name="Moon" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ndpyj")
+
+[node name="Darkening" type="MeshInstance3D" parent="Moon"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, -1.01608e-13, 0, 1.01608e-13, 1.1, 2, 0, 0.2)
+mesh = SubResource("PlaneMesh_t7bgi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Moon"]
+transform = Transform3D(2, 0, 0, 0, 1.1, -1.01608e-13, 0, 1.01608e-13, 1.1, 1.6586, 0, -0.2)
+mesh = SubResource("PlaneMesh_2d8le")
+skeleton = NodePath("../Darkening")

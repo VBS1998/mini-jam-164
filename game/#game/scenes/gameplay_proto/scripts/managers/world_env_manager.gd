@@ -32,5 +32,5 @@ func intensify_skybox(intensity:float):
 	pass
 
 func intensify(intensity:float):
-	intensify_fog(intensity)
-	intensify_skybox(intensity)
+	intensify_fog(1-intensity)
+	intensify_skybox(1-intensity)

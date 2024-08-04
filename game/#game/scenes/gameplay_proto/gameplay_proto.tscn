@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://1r13fao81pgg"]
+[gd_scene load_steps=22 format=3 uid="uid://1r13fao81pgg"]
 
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/scene_manager.gd" id="1_2csxf"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/ambient_manager.gd" id="2_62dam"]
 [ext_resource type="Terrain3DStorage" uid="uid://cnlj8epec3aba" path="res://#game/Art/Terrains/gameplay_proto/proto_terrain.res" id="2_rnha8"]
 [ext_resource type="Terrain3DMaterial" uid="uid://cfto7uloxydc1" path="res://#game/Art/Terrains/gameplay_proto/default_terrain_3d_material.tres" id="3_ufofr"]
+[ext_resource type="PackedScene" uid="uid://db7yghaf3isve" path="res://#game/components/moon/moon.tscn" id="3_wpgei"]
 [ext_resource type="Terrain3DAssets" uid="uid://bnq6fnvu6uovo" path="res://#game/Art/Terrains/gameplay_proto/terrain_meshes_textures_lists.tres" id="4_iy8fh"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/lightning_manager.gd" id="6_evdyr"]
 [ext_resource type="PackedScene" uid="uid://tbn0qo8ft758" path="res://#game/Art/snailman/snailman_(1).tscn" id="6_yec2b"]
@@ -31,7 +32,6 @@ sky_material = SubResource("PanoramaSkyMaterial_2on4g")
 resource_local_to_scene = true
 background_mode = 2
 sky = SubResource("Sky_5cc27")
-fog_enabled = true
 fog_light_energy = 0.38
 fog_density = 0.0003
 
@@ -47,14 +47,18 @@ script = ExtResource("1_2csxf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_lo3ft")
 
-[node name="AmbientManager" type="Node3D" parent="." node_paths=PackedStringArray("lightning_manager", "world_env_manager")]
+[node name="AmbientManager" type="Node3D" parent="." node_paths=PackedStringArray("lightning_manager", "world_env_manager", "moon_manager")]
 script = ExtResource("2_62dam")
 lightning_manager = NodePath("../Scenary/Lightining")
 world_env_manager = NodePath("../WorldEnvManager")
+moon_manager = NodePath("../Scenary/Objects/MoonController")
 
 [node name="Scenary" type="Node3D" parent="."]
 
 [node name="Objects" type="Node3D" parent="Scenary"]
+
+[node name="MoonController" parent="Scenary/Objects" instance=ExtResource("3_wpgei")]
+transform = Transform3D(39.973, -0.945717, 1.12354, 1.4145, 33.0214, -22.5296, -0.394858, 22.5541, 33.0326, 6.89585, 75.8575, -382.513)
 
 [node name="Terrain3D" type="Terrain3D" parent="Scenary"]
 storage = ExtResource("2_rnha8")
