@@ -2,7 +2,7 @@ class_name GameplayProtoSceneManager extends Node3D
 
 const main_menu_scene_path = "res://#game/scenes/main_menu/main_menu.tscn"
 # Called when the node enters the scene tree for the first time.
-const TIME_MAX = 10.0
+@export var TIME_MAX = 10.0
 const UPDATE_SPEED = 0.1
 var time_spent = 0.0
 var time_thread: Thread
