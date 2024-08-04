@@ -1,0 +1,157 @@
+[gd_scene load_steps=29 format=3 uid="uid://cnbgqppqyn3ah"]
+
+[ext_resource type="PackedScene" uid="uid://db7yghaf3isve" path="res://#game/components/moon/moon.tscn" id="1_47acd"]
+[ext_resource type="PackedScene" uid="uid://c501ahusa6fxu" path="res://#game/components/player/player.tscn" id="1_h67bo"]
+[ext_resource type="Script" path="res://#game/scenes/real_game/GameSceneManager.gd" id="1_i0oaj"]
+[ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/ambient_manager.gd" id="2_e17ag"]
+[ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/lightning_manager.gd" id="2_xf8gr"]
+[ext_resource type="Texture2D" uid="uid://cxkfec4bcbjrt" path="res://#game/Art/Materials/panorama_image (3).png" id="2_ypvp0"]
+[ext_resource type="Terrain3DStorage" uid="uid://cvluyf5o8fn4t" path="res://#game/scenes/real_game/game_terrain_storage.res" id="3_jio34"]
+[ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/world_env_manager.gd" id="3_rtf5t"]
+[ext_resource type="Texture2D" uid="uid://k1xxuudgbv40" path="res://#game/Art/Materials/PbrTextures/forest-floor-bl/PackedTextures/packed_albedo_height.png" id="4_jtuls"]
+[ext_resource type="Script" path="res://#game/scenes/gameplay_proto/AudioManager.gd" id="5_76gxd"]
+[ext_resource type="Texture2D" uid="uid://bkiymscfadmfd" path="res://#game/Art/Materials/PbrTextures/forest-floor-bl/PackedTextures/packed_normal_roughness.png" id="5_bbwpo"]
+[ext_resource type="AudioStream" uid="uid://6npjvs45s7wn" path="res://#game/Art/Music/Enclosed Forest _ Eerie Fauna, Creepy Noises, Nighttime Ambience _ 3 Hours (mp3cut.net).mp3" id="6_onnv0"]
+[ext_resource type="AudioStream" uid="uid://cw5v4f13cnjcq" path="res://#game/Art/Music/Fundo Tema de Terror (slow+echo).mp3" id="7_tapex"]
+[ext_resource type="Script" path="res://#game/scenes/real_game/EnemyManager.gd" id="14_nunuo"]
+[ext_resource type="PackedScene" uid="uid://bli8pbq1ipb03" path="res://#game/components/shadow_attack/shadow_start.tscn" id="14_onu5i"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_s8yk8"]
+
+[sub_resource type="Gradient" id="Gradient_vu6hm"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ko6ed"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pvqqy"]
+seamless = true
+color_ramp = SubResource("Gradient_vu6hm")
+noise = SubResource("FastNoiseLite_ko6ed")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_t20gv"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"macro_variation1": Color(1, 1, 1, 1),
+"macro_variation2": Color(1, 1, 1, 1),
+"noise1_angle": 0.0,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise3_scale": 0.225,
+"noise_texture": SubResource("NoiseTexture2D_pvqqy"),
+"vertex_normals_distance": 128.0
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfi8k"]
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_5xnhl"]
+height_offset = 0.5
+density = 10.0
+material_override = SubResource("StandardMaterial3D_lfi8k")
+generated_type = 1
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_kdl1j"]
+name = "packed_albedo_height"
+albedo_texture = ExtResource("4_jtuls")
+normal_texture = ExtResource("5_bbwpo")
+uv_scale = 1.0
+detiling = 0.457
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_44fku"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_5xnhl")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_kdl1j")])
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wkfkh"]
+panorama = ExtResource("2_ypvp0")
+
+[sub_resource type="Sky" id="Sky_5cc27"]
+sky_material = SubResource("PanoramaSkyMaterial_wkfkh")
+
+[sub_resource type="Environment" id="Environment_7jr1w"]
+resource_local_to_scene = true
+background_mode = 2
+sky = SubResource("Sky_5cc27")
+fog_light_energy = 0.38
+fog_density = 0.0003
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d17kb"]
+resource_local_to_scene = true
+
+[node name="SceneManager" type="Node3D"]
+script = ExtResource("1_i0oaj")
+
+[node name="AmbientManager" type="Node3D" parent="." node_paths=PackedStringArray("lightning_manager", "world_env_manager", "moon_manager", "audio_manager")]
+script = ExtResource("2_e17ag")
+lightning_manager = NodePath("../Scenary/Lightining")
+world_env_manager = NodePath("../WorldEnvManager")
+moon_manager = NodePath("../Scenary/Objects/MoonController")
+audio_manager = NodePath("../AudioManager")
+
+[node name="Scenary" type="Node3D" parent="."]
+
+[node name="Objects" type="Node3D" parent="Scenary"]
+
+[node name="MoonController" parent="Scenary/Objects" instance=ExtResource("1_47acd")]
+transform = Transform3D(39.973, -0.945717, 1.12354, 1.4145, 33.0214, -22.5296, -0.394858, 22.5541, 33.0326, 6.89585, 75.8575, -382.513)
+
+[node name="Lightining" type="Node3D" parent="Scenary"]
+script = ExtResource("2_xf8gr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scenary/Lightining"]
+transform = Transform3D(1, 0, 0, 0, 0.879399, 0.476085, 0, -0.476085, 0.879399, 0, 1.35057, 2.26571)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Scenary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0784979, 0.0121396, -0.0845952)
+navigation_mesh = SubResource("NavigationMesh_s8yk8")
+
+[node name="Terrain3D" type="Terrain3D" parent="Scenary/NavigationRegion3D"]
+storage = ExtResource("3_jio34")
+material = SubResource("Terrain3DMaterial_t20gv")
+assets = SubResource("Terrain3DAssets_44fku")
+
+[node name="Player" parent="." node_paths=PackedStringArray("scene_manager") instance=ExtResource("1_h67bo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51404, 3)
+scene_manager = NodePath("..")
+
+[node name="WorldEnvManager" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7jr1w")
+camera_attributes = SubResource("CameraAttributesPractical_d17kb")
+script = ExtResource("3_rtf5t")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("5_76gxd")
+
+[node name="AudioStreamPlayerForestSound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("6_onnv0")
+autoplay = true
+
+[node name="AudioStreamPlayerCreepySound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("7_tapex")
+volume_db = -80.0
+autoplay = true
+
+[node name="EnemyManager" type="Node3D" parent="." node_paths=PackedStringArray("scene_manager")]
+script = ExtResource("14_nunuo")
+scene_manager = NodePath("..")
+
+[node name="ShadowStart" parent="EnemyManager" node_paths=PackedStringArray("nav_region", "player", "enemy_manager") instance=ExtResource("14_onu5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57095, -9.84816)
+nav_region = NodePath("../../Scenary/NavigationRegion3D")
+player = NodePath("../../Player")
+enemy_manager = NodePath("..")

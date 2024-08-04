@@ -1,7 +1,7 @@
 extends Node3D
 
 const FADING_SPEED = 1.2
-const ENERGY_MAX = 5
+const ENERGY_MAX = 10
 var light : Light3D
 
 var area : Area3D

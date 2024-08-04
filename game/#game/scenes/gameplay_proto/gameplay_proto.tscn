@@ -60,13 +60,13 @@ size = Vector3(3, 3, 3)
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2on4g"]
 panorama = ExtResource("10_i7y74")
 
-[sub_resource type="Sky" id="Sky_5cc27"]
+[sub_resource type="Sky" id="Sky_owhha"]
 sky_material = SubResource("PanoramaSkyMaterial_2on4g")
 
 [sub_resource type="Environment" id="Environment_5rghn"]
 resource_local_to_scene = true
 background_mode = 2
-sky = SubResource("Sky_5cc27")
+sky = SubResource("Sky_owhha")
 fog_light_energy = 0.38
 fog_density = 0.0003
 
