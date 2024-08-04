@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://1r13fao81pgg"]
+[gd_scene load_steps=18 format=3 uid="uid://1r13fao81pgg"]
 
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/scene_manager.gd" id="1_2csxf"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/ambient_manager.gd" id="2_62dam"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://tbn0qo8ft758" path="res://#game/Art/snailman/snailman_(1).tscn" id="6_yec2b"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="7_xrpol"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/goal.gd" id="9_lwuvd"]
+[ext_resource type="Texture2D" uid="uid://cxkfec4bcbjrt" path="res://#game/Art/Materials/panorama_image (3).png" id="10_i7y74"]
 [ext_resource type="Script" path="res://#game/scenes/gameplay_proto/scripts/managers/world_env_manager.gd" id="10_xigyv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lo3ft"]
@@ -17,8 +18,16 @@ size = Vector3(100, 1, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wk1vk"]
 size = Vector3(3, 3, 3)
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2on4g"]
+panorama = ExtResource("10_i7y74")
+
+[sub_resource type="Sky" id="Sky_5cc27"]
+sky_material = SubResource("PanoramaSkyMaterial_2on4g")
+
 [sub_resource type="Environment" id="Environment_5rghn"]
 resource_local_to_scene = true
+background_mode = 2
+sky = SubResource("Sky_5cc27")
 fog_enabled = true
 fog_light_energy = 0.38
 fog_density = 0.0003
