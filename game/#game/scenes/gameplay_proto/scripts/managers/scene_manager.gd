@@ -18,7 +18,7 @@ func _ready():
 	time_thread = Thread.new()
 	time_thread.start(start_timer.bind(TIME_MAX, UPDATE_SPEED))
 	
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	ambient_manager.set_amb_intensity(time_spent/TIME_MAX)

@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://d16kxo4kbu5ug"]
+
+[ext_resource type="Texture2D" uid="uid://bnmli0bkf4ysd" path="res://#game/Art/Trees/OakNormieTree/Textures/barkOak001.png" id="1_oawii"]
+[ext_resource type="Texture2D" uid="uid://bq13q3k1w6c12" path="res://#game/Art/Trees/OakNormieTree/Textures/barkOak001_AO.png" id="2_br03c"]
+[ext_resource type="Texture2D" uid="uid://ccmdad7bmc7q5" path="res://#game/Art/Trees/OakNormieTree/Textures/barkOak001_smooth.png" id="3_8bjt8"]
+[ext_resource type="Texture2D" uid="uid://byemnw302bvff" path="res://#game/Art/Trees/OakNormieTree/Textures/barkOak001_N.png" id="4_iqex0"]
+
+[resource]
+resource_name = "Trunk01"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_oawii")
+metallic = 1.0
+metallic_texture = ExtResource("3_8bjt8")
+roughness = 0.301511
+normal_enabled = true
+normal_texture = ExtResource("4_iqex0")
+ao_enabled = true
+ao_texture = ExtResource("2_br03c")
