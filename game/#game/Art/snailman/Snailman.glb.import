@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dwc0j2e7s4inu"
-path="res://.godot/imported/Snailman (1).glb-d7f61a5c1437b4ff67c799966a4fc671.scn"
+path="res://.godot/imported/Snailman.glb-ab9e7b353a02f36fdf189aa74b56b114.scn"
 
 [deps]
 
-source_file="res://#game/Art/snailman/Snailman (1).glb"
-dest_files=["res://.godot/imported/Snailman (1).glb-d7f61a5c1437b4ff67c799966a4fc671.scn"]
+source_file="res://#game/Art/snailman/Snailman.glb"
+dest_files=["res://.godot/imported/Snailman.glb-ab9e7b353a02f36fdf189aa74b56b114.scn"]
 
 [params]
 
@@ -1829,6 +1829,16 @@ _subresources={
 "slice_99/save_to_file/path": "",
 "slice_99/start_frame": 0,
 "slices/amount": 1
+}
+},
+"materials": {
+"Snailman_EyesLow:standardSurface1SG": {
+"use_external/enabled": true,
+"use_external/path": "res://#game/Art/snailman/Snailman_EyesLow_standardSurface1SG.tres"
+},
+"initialShadingGroup": {
+"use_external/enabled": true,
+"use_external/path": "res://#game/Art/snailman/initialShadingGroup.tres"
 }
 }
 }
