@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://c501ahusa6fxu"]
+[gd_scene load_steps=22 format=3 uid="uid://c501ahusa6fxu"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_ldjhj"]
+[ext_resource type="PackedScene" uid="uid://dw1tpjtgkvfso" path="res://#game/components/tekpix/tekpix.tscn" id="2_qtcdw"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="2_y4sr4"]
 [ext_resource type="Script" path="res://addons/fpc/EditorModule.gd" id="3_2fljm"]
 
@@ -377,13 +378,16 @@ libraries = {
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
+[node name="TekpixManager" parent="Head" instance=ExtResource("2_qtcdw")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.342239, -0.0661391, -0.416407)
+
 [node name="Camera" type="Camera3D" parent="Head"]
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {
 "": SubResource("AnimationLibrary_o0unb")
 }
-blend_times = [&"walk", &"RESET", 0.5, &"RESET", &"walk", 0.5, &"RESET", &"RESET", 0.5]
+blend_times = [&"RESET", &"RESET", 0.5, &"RESET", &"walk", 0.5, &"walk", &"RESET", 0.5]
 
 [node name="JumpAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {

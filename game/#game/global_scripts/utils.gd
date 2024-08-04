@@ -14,4 +14,4 @@ static func rangef(start: float, end: float, step: float):
 static func class_implements(obj : Object, interfaces : Array[Object]):
 	for interface in interfaces:
 		for method in interface.get_script_method_list():
-			return method in obj.get_script().get_script_method_list()
+			return obj.get_script() and method in obj.get_script().get_script_method_list()
