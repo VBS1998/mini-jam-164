@@ -145,9 +145,9 @@ stream = ExtResource("7_tapex")
 volume_db = -80.0
 autoplay = true
 
-[node name="Enemies" type="Node3D" parent="."]
+[node name="EnemyManager" type="Node3D" parent="."]
 
-[node name="Enemy 1" parent="Enemies" node_paths=PackedStringArray("nav_region", "player") instance=ExtResource("14_h8fsq")]
+[node name="Enemy 1" parent="EnemyManager" node_paths=PackedStringArray("nav_region", "player") instance=ExtResource("14_h8fsq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52791, 2.64019, -7.13721)
 nav_region = NodePath("../../Scenary/NavigationRegion3D")
 player = NodePath("../../Player")
