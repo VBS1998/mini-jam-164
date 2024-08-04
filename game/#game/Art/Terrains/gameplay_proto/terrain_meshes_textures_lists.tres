@@ -1,8 +1,10 @@
-[gd_resource type="Terrain3DAssets" load_steps=9 format=3 uid="uid://bnq6fnvu6uovo"]
+[gd_resource type="Terrain3DAssets" load_steps=14 format=3 uid="uid://bnq6fnvu6uovo"]
 
 [ext_resource type="PackedScene" uid="uid://qxhubr4awajj" path="res://#game/Art/Trees/OakNormieTree/tree.fbx" id="1_fu2ot"]
 [ext_resource type="Texture2D" uid="uid://k1xxuudgbv40" path="res://#game/Art/Materials/PbrTextures/forest-floor-bl/PackedTextures/packed_albedo_height.png" id="1_pwyh1"]
+[ext_resource type="PackedScene" uid="uid://ddtuema6a8l0p" path="res://#game/Art/Trees/Stones/stone_a/stone_small_a.FBX" id="2_0t1w8"]
 [ext_resource type="Texture2D" uid="uid://bkiymscfadmfd" path="res://#game/Art/Materials/PbrTextures/forest-floor-bl/PackedTextures/packed_normal_roughness.png" id="2_ro0a0"]
+[ext_resource type="PackedScene" uid="uid://bnk8oavwxyst4" path="res://#game/Art/Trees/Stones/stone_b/stone_small_b.fbx" id="3_i81xn"]
 [ext_resource type="Texture2D" uid="uid://ixyq2s6sgg3a" path="res://#game/Art/Materials/PbrTextures/whispy-grass-meadow-bl/RepackedTextures/packed_albedo_height.png" id="3_pcd7n"]
 [ext_resource type="Texture2D" uid="uid://dmdkr1j125nbh" path="res://#game/Art/Materials/PbrTextures/whispy-grass-meadow-bl/RepackedTextures/packed_normal_roughness.png" id="4_w2hbx"]
 
@@ -10,6 +12,32 @@
 name = "OakBigTree01"
 density = 0.01
 scene_file = ExtResource("1_fu2ot")
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_f0rjd"]
+name = "stone_small_a"
+id = 1
+density = 10.0
+scene_file = ExtResource("2_0t1w8")
+
+[sub_resource type="PackedScene" id="PackedScene_5tg1y"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Root Scene", "RootNode", "transform"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0),
+"variants": [ExtResource("3_i81xn"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.259914, 0)],
+"version": 3
+}
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_b6224"]
+name = "stone_small_b"
+id = 2
+density = 10.0
+scene_file = SubResource("PackedScene_5tg1y")
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_1tr0s"]
 name = "packed_albedo_height"
@@ -25,5 +53,5 @@ albedo_texture = ExtResource("3_pcd7n")
 normal_texture = ExtResource("4_w2hbx")
 
 [resource]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_yl4hn")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_yl4hn"), SubResource("Terrain3DMeshAsset_f0rjd"), SubResource("Terrain3DMeshAsset_b6224")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_1tr0s"), SubResource("Terrain3DTextureAsset_rkcj3")])

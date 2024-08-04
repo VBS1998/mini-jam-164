@@ -75,6 +75,7 @@ resource_local_to_scene = true
 
 [node name="SceneManager" type="Node3D"]
 script = ExtResource("1_2csxf")
+TIME_MAX = 120.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
