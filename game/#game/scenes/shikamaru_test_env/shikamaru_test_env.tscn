@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4q7p1yp76ylj"]
+[gd_scene load_steps=13 format=3 uid="uid://b4q7p1yp76ylj"]
 
+[ext_resource type="Script" path="res://#game/scenes/shikamaru_test_env/shikamaru_test_env_scene_manager.gd" id="1_eis0w"]
 [ext_resource type="Terrain3DStorage" uid="uid://d18lmi18gxkuu" path="res://#game/scenes/shikamaru_test_env/new_terrain_3d_storage.res" id="1_yta6t"]
 [ext_resource type="PackedScene" uid="uid://c501ahusa6fxu" path="res://#game/components/player/player.tscn" id="2_35ykn"]
 [ext_resource type="PackedScene" uid="uid://bn2pts4jb08q7" path="res://#game/components/shadow_attack/character_body_3d.tscn" id="3_jjf4v"]
@@ -44,7 +45,6 @@ _shader_parameters = {
 "vertex_normals_distance": 128.0
 }
 show_checkered = true
-show_navigation = true
 resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqk8l"]
@@ -64,6 +64,7 @@ mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_ylixa")])
 resource_local_to_scene = true
 
 [node name="ShikamaruTestEnv" type="Node3D"]
+script = ExtResource("1_eis0w")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_6t317")
@@ -72,11 +73,15 @@ navigation_mesh = SubResource("NavigationMesh_6t317")
 storage = ExtResource("1_yta6t")
 material = SubResource("Terrain3DMaterial_mbu8w")
 assets = SubResource("Terrain3DAssets_slijt")
+collision_mask = 15
 
-[node name="Character" parent="." instance=ExtResource("2_35ykn")]
+[node name="Character" parent="." node_paths=PackedStringArray("scene_manager") instance=ExtResource("2_35ykn")]
 transform = Transform3D(0.168816, 0, -0.985648, 0, 1, 0, 0.985648, 0, 0.168816, -14.992, 0, -5.23662)
+scene_manager = NodePath("..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.463574, 0.886058, 0, -0.886058, 0.463574, 0, 0, 0)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("3_jjf4v")]
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("nav_region", "player") instance=ExtResource("3_jjf4v")]
+nav_region = NodePath("../NavigationRegion3D")
+player = NodePath("../Character")

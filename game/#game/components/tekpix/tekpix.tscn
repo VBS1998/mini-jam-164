@@ -18,6 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0139127, 0, 0.00266263)
 script = ExtResource("3_vp58m")
 
 [node name="Area3D" type="Area3D" parent="Flash"]
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Flash/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 7.5)

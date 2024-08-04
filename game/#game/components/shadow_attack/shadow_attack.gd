@@ -1,10 +1,13 @@
 extends CharacterBody3D
 
 @export var nav_region : NavigationRegion3D
-@export var nav_agent : NavigationAgent3D
+var nav_agent : NavigationAgent3D
 @export var player : CharacterFpc
 
 const SPEED = 2
+
+func _ready():
+	nav_agent = find_child("NavigationAgent3D")
 
 func _process(delta):
 	if player != null:
@@ -20,3 +23,11 @@ func _physics_process(delta):
 			var new_pos = global_position + (direction * delta * SPEED)
 			new_pos.y =  global_position.y
 			global_position = new_pos
+
+func kill():
+	print("morri")
+
+var player_implements : Array[Object] = [IKillable]
+func _on_area_3d_body_entered(body):
+	if Utils.class_implements(body, player_implements):
+		body.kill()

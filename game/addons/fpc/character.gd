@@ -7,7 +7,9 @@
 class_name CharacterFpc extends CharacterBody3D
 
 # TODO: Add descriptions for each value
-
+@export_category("Scene")
+@export var scene_manager : Node3D
+var scene_manager_implements : Array[Object] = [IGameController]
 
 @export_category("Character")
 @export var base_speed : float = 3.0
@@ -355,3 +357,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		mouseInput.x += event.relative.x
 		mouseInput.y += event.relative.y
+		
+func kill():
+	assert(Utils.class_implements(scene_manager, scene_manager_implements), "Scene Manager does not implement all required interfaces")
+	scene_manager.lose()
