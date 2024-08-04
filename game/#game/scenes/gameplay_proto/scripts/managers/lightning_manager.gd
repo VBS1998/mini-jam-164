@@ -12,4 +12,4 @@ func _process(delta):
 func intensify(intensity:float):
 	for child in get_children():
 		if child is Light3D:
-			child.light_energy = intensity
+			child.light_energy = 1 - intensity

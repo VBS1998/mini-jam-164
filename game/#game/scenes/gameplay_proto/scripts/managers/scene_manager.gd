@@ -18,7 +18,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	ambient_manager.set_amb_intensity(1 - time_spent/TIME_MAX)
+	ambient_manager.set_amb_intensity(time_spent/TIME_MAX)
 
 func player_reached_goal():
 	print("GANHOO")
